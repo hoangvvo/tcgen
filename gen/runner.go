@@ -85,7 +85,7 @@ func RunCmds(conf *Config, cmdGenExec Executor, cmdSolExec Executor, total int, 
 func PrepareOutdir(conf *Config) string {
 	var outDir string
 	if conf.Output.Dir == "" {
-		panic(errors.New("no out.dir in config"))
+		panic(errors.New("no output.dir in config"))
 	}
 	outDir = FormatPathCwd(conf.Output.Dir)
 	os.RemoveAll(outDir)

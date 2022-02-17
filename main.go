@@ -15,11 +15,14 @@ func execute(conf *gen.Config, genPath string, solPath string, total int) {
 	rootTempDir := path.Join(os.TempDir(), "judgen")
 	os.MkdirAll(rootTempDir, os.ModePerm)
 
-	wd, _ := os.Getwd()
+	cwd, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
 
 	outDir := gen.PrepareOutdir(conf)
 
-	tempDir, err := ioutil.TempDir(rootTempDir, path.Base(wd))
+	tempDir, err := ioutil.TempDir(rootTempDir, path.Base(cwd))
 	// cleanup
 	defer os.RemoveAll(tempDir)
 

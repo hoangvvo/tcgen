@@ -1,7 +1,9 @@
 package gen
 
 import (
+	_ "embed"
 	"os"
+	"path"
 
 	"gopkg.in/yaml.v2"
 )
@@ -27,11 +29,25 @@ type Config struct {
 	Output    ConfigOutput
 }
 
+//go:embed judgen.yml
+var defaultConfigDat []byte
+
 func GetConf() *Config {
-	configDat, err := os.ReadFile("judgen.yml")
+	var configDat []byte
+
+	cwd, err := os.Getwd()
 	if err != nil {
 		panic(err)
 	}
+
+	if configDatAlt, err := os.ReadFile(path.Join(cwd, "judgen.yml")); err == nil {
+		configDat = configDatAlt
+	} else if os.IsNotExist(err) {
+		configDat = defaultConfigDat
+	} else {
+		panic(err)
+	}
+
 	var conf Config
 	err = yaml.Unmarshal(configDat, &conf)
 	if err != nil {

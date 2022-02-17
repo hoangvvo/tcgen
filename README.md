@@ -21,7 +21,7 @@ After `n` runs, the program will copy all input and output files into folder wit
 
 ## Configuration file
 
-The configuration file must be placed in the same folder with `judgen`. See the sample config file: [judgen.yml](./judgen.yml).
+An optional configuration file named `judgen.yml` may placed in the same folder with `judgen`. See the sample config file: [judgen.yml](./gen/judgen.yml).
 
 - `testcase.extensions`: Files with such extensions will be copied to the result folder.
 - `output.dir`: result folder to store test cases.
@@ -36,7 +36,7 @@ To configure a language, add a key with any name (should be alpha character) wit
 - `compile`: (only if the language needs compilation) an array of command line arguments to compile the code. Must include "SOURCE" to be replaced with the source code path and "OUTPUT" to be replaced with the output binary. Languages like Python does not have this step.
 - `run`: an array of command line arguments to run the binary. Must include "OUTPUT" to be replaced with the output binary.
 
-See the sample config [judgen.yml](./judgen.yml) to learn more.
+See the sample config [judgen.yml](./gen/judgen.yml) to learn more.
 
 ## Write case generation and solver code
 
