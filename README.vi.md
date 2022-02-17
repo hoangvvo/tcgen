@@ -4,6 +4,8 @@ Tạo test case cho câu hỏi lập trình.
 
 ## Hướng dẫn
 
+https://raw.githubusercontent.com/hoangvvo/judgen/main/example/demo.mp4
+
 Tạo 2 file code cho các mục đích:
 
 - **Tạo case**: Khi chạy, code này sẽ viết ra file input.
@@ -11,7 +13,7 @@ Tạo 2 file code cho các mục đích:
 
 Các file input và output phải có đuôi đuợc liệt kê trong thiết lập `testcase.extensions`.
 
-Chạy chuơng trình. Sau đó nhập địa điểm 2 file trên và số lần chạy `n`.
+Chạy chuơng trình. Sau đó nhập địa điểm file Tạo case, file Giải case, và số lần chạy `n`.
 
 Sau khi chạy `n` lần, chuơng trình sẽ copy hết các file input, output cho vào các thứ mục có tên dạng "TEST`i`" (trong đó `i` là số thứ tự test).
 
@@ -42,16 +44,17 @@ Xem [ví dụ](./example/)
 
 Code tạo case cần viết ra file input.
 
-Code sẽ đuợc gọi với stt lần chạy ở argument đầu tiên (argument sau tên gọi), bắt đầu từ 1. Giá trị này có thể dùng cho các mục đích khác nhau (vd: để tạo test case tuỳ theo độ khó).
+Code sẽ đuợc gọi với stt lần chạy ở argument đầu tiên (argument sau tên gọi), bắt đầu từ 1. Giá trị này có thể dùng cho các mục đích khác nhau.
 
-Ví dụ chương trình có tổng cộng 10 case và bạn muốn 5 case dễ và 5 case khó.
+Ví dụ sử dụng stt lần chạy để tạo test có độ khó khác nhau:
 
 ```cpp
+// Tạo 5 test đầu dễ và các test sau khó
 int main(int argc, char** argv)
 {
   int caseNumber = atoi(argv[1]);
-  if (caseNumber < 5) generateEasyTestCase();
-  else generateDifficultTestCase()
+  if (caseNumber < 5) taoTestCaseDonGian();
+  else taoTestCaseKho();
 }
 ```
 

@@ -6,6 +6,8 @@ Generate test cases for coding problems.
 
 ## Instruction
 
+https://raw.githubusercontent.com/hoangvvo/judgen/main/example/demo.mp4
+
 Craete 2 code files for the following purposes:
 
 - **Case generation**: When run, this code should write the input file.
@@ -44,14 +46,17 @@ See [example](./example)
 
 The code must write an input file.
 
-This code will be called with the run number as the first argument (one right after caller name), starting with 1. This value can be used for different purposes (eg: create test cases with different difficulties).
+This code will be called with the run number as the first argument (one right after caller name), starting with 1. This value can be used for different purposes.
+
+An example making use of case number for case difficulty:
 
 ```cpp
+// Generate the first 5 cases to be easy and the rest to be difficult
 int main(int argc, char** argv)
 {
   int caseNumber = atoi(argv[1]);
-  if (caseNumber < 5) generateEasyTestCase();
-  else generateDifficultTestCase()
+  if (caseNumber <= 5) generateEasyTestCase();
+  else generateDifficultTestCase();
 }
 ```
 
