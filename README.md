@@ -1,4 +1,4 @@
-# judgen
+# judgen: code judge test case generator
 
 [Tiếng Việt](./README.vi.md)
 
@@ -24,7 +24,7 @@ After `n` runs, the program will copy all input and output files into folder wit
 An optional configuration file named `judgen.yml` may placed in the same folder with `judgen`. See the sample config file: [judgen.yml](./gen/judgen.yml).
 
 - `testcase.extensions`: Files with such extensions will be copied to the result folder.
-- `output.dir`: result folder to store test cases.
+- `testcase.output`: result folder to store test cases, character "_" should be included to be later replaced with formatted test number. (eg `./result/TEST_`)
 - `language.[name]`: Configure a language. See below.
 
 ## Configure a language

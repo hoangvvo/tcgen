@@ -1,4 +1,4 @@
-# judgen
+# judgen: code judge test case generator
 
 Tạo test case cho câu hỏi lập trình.
 
@@ -22,7 +22,7 @@ Sau khi chạy `n` lần, chuơng trình sẽ copy hết các file input, output
 File thiết lập tùy chọn có thể được đặt trong cùng thư mục với chuơng trình `judgen`. Xem file thiết lập mẫu: [judgen.yml](./gen/judgen.yml).
 
 - `testcase.extensions`: file có các đuôi này sẽ đuợc copy ra thư mục kết quả.
-- `output.dir`: thư mục kết quả test case
+- `testcase.output`: kí tự "_" cần được sử dùng để sau này thay thế bằng stt test. (vd `./result/TEST_`)
 - `language.[name]`: thiết lập ngôn ngữ. Xem phần duới.
 
 ### Thiết lập ngôn ngữ

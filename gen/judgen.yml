@@ -1,5 +1,6 @@
 testcase:
   extensions: ["inp", "out", "txt"]
+  output: ./result/TEST*/
 languages:
   c:
     name: "C"
@@ -25,5 +26,3 @@ languages:
     extensions: ["pas", "pp"]
     compile: ["fpc", "SOURCE"]
     run: ["OUTPUT"]
-output:
-  dir: ./result

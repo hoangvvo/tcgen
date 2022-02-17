@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"os/exec"
-	"path"
 	"path/filepath"
 	"strings"
 )
@@ -44,8 +43,8 @@ func CompileFile(conf *Config, inPath string, outDir string) Executor {
 		fmt.Println("\tLanguage:", lang.Name)
 	}
 
-	outFilename := GetOutFileLoc(inPath) // get a file without ext and path
-	outPath := path.Join(outDir, outFilename)
+	outFilename := getOutFilename(inPath) // get a file without ext and path
+	outPath := filepath.Join(outDir, outFilename)
 
 	if lang.Compile == nil {
 		LogSuccess("\tNo compilation needed")

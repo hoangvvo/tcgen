@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"path"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -68,10 +67,10 @@ func FormatPathCwd(filePath string) string {
 	if err != nil {
 		panic(err)
 	}
-	if path.IsAbs(filePath) {
+	if filepath.IsAbs(filePath) {
 		return filePath
 	}
-	return path.Join(cwd, filePath)
+	return filepath.Join(cwd, filePath)
 }
 
 // String
@@ -90,7 +89,7 @@ func GetFilepath(promptStr string) string {
 	return filePath
 }
 
-func GetOutFileLoc(basename string) string {
+func getOutFilename(basename string) string {
 	return strings.TrimSuffix(filepath.Base(basename), filepath.Ext(basename))
 }
 

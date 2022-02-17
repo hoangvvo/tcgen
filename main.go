@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"path"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -12,7 +12,7 @@ import (
 )
 
 func execute(conf *gen.Config, genPath string, solPath string, total int) {
-	rootTempDir := path.Join(os.TempDir(), "judgen")
+	rootTempDir := filepath.Join(os.TempDir(), "judgen")
 	os.MkdirAll(rootTempDir, os.ModePerm)
 
 	cwd, err := os.Getwd()
@@ -22,7 +22,7 @@ func execute(conf *gen.Config, genPath string, solPath string, total int) {
 
 	outDir := gen.PrepareOutdir(conf)
 
-	tempDir, err := ioutil.TempDir(rootTempDir, path.Base(cwd))
+	tempDir, err := ioutil.TempDir(rootTempDir, filepath.Base(cwd))
 	// cleanup
 	defer os.RemoveAll(tempDir)
 

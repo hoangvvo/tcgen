@@ -3,13 +3,14 @@ package gen
 import (
 	_ "embed"
 	"os"
-	"path"
+	"path/filepath"
 
 	"gopkg.in/yaml.v2"
 )
 
 type ConfigTestCase struct {
 	Extensions []string
+	Output     string
 }
 
 type ConfigLanguage struct {
@@ -19,14 +20,9 @@ type ConfigLanguage struct {
 	Run        []string
 }
 
-type ConfigOutput struct {
-	Dir string
-}
-
 type Config struct {
 	Testcase  ConfigTestCase
 	Languages map[string]ConfigLanguage
-	Output    ConfigOutput
 }
 
 //go:embed judgen.yml
@@ -40,7 +36,7 @@ func GetConf() *Config {
 		panic(err)
 	}
 
-	if configDatAlt, err := os.ReadFile(path.Join(cwd, "judgen.yml")); err == nil {
+	if configDatAlt, err := os.ReadFile(filepath.Join(cwd, "judgen.yml")); err == nil {
 		configDat = configDatAlt
 	} else if os.IsNotExist(err) {
 		configDat = defaultConfigDat

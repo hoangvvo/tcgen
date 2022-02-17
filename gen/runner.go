@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
-	"path"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -42,7 +41,7 @@ func CopyArtifacts(conf *Config, inDir string, outDir string) {
 	for _, file := range files {
 		filename := file.Name()
 		if shouldCopy(conf, filename) {
-			err := MoveFile(path.Join(inDir, filename), path.Join(outDir, filename))
+			err := MoveFile(filepath.Join(inDir, filename), filepath.Join(outDir, filename))
 			if err != nil {
 				panic(err)
 			}
@@ -76,7 +75,8 @@ func RunCmds(conf *Config, cmdGenExec Executor, cmdSolExec Executor, total int, 
 			panic(err)
 		}
 
-		CopyArtifacts(conf, inDir, path.Join(outDir, "TEST"+formatTestNumber(i, total)))
+		eachOutDir := strings.Replace(outDir, "*", formatTestNumber(i, total), -1)
+		CopyArtifacts(conf, inDir, eachOutDir)
 
 		bar.Add(1)
 	}
@@ -84,11 +84,11 @@ func RunCmds(conf *Config, cmdGenExec Executor, cmdSolExec Executor, total int, 
 
 func PrepareOutdir(conf *Config) string {
 	var outDir string
-	if conf.Output.Dir == "" {
+	if conf.Testcase.Output == "" {
 		panic(errors.New("no output.dir in config"))
 	}
-	outDir = FormatPathCwd(conf.Output.Dir)
-	os.RemoveAll(outDir)
-	os.MkdirAll(outDir, os.ModePerm)
+	outDir = FormatPathCwd(filepath.FromSlash(conf.Testcase.Output))
+	//os.RemoveAll(outDir)
+	//os.MkdirAll(outDir, os.ModePerm)
 	return outDir
 }
