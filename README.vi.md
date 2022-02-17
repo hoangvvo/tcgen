@@ -4,7 +4,7 @@ Tạo test case cho câu hỏi lập trình.
 
 ## Hướng dẫn
 
-![demo](https://raw.githubusercontent.com/hoangvvo/judgen/main/example/demo.mp4)
+https://user-images.githubusercontent.com/40987398/154550586-d808d93b-9152-4231-ac89-b2175931c1f7.mp4
 
 Tạo 2 file code cho các mục đích:
 
