@@ -52,7 +52,7 @@ func CopyArtifacts(conf *Config, inDir string, outDir string) {
 type Executor func(extraArgs ...string) *exec.Cmd
 
 func RunCmds(conf *Config, cmdGenExec Executor, cmdSolExec Executor, total int, inDir string, outDir string) {
-	LogTask("thuc hien sinh test")
+	LogTask("Generating test cases")
 	bar := progressbar.Default(int64(total))
 	for i := 0; i < total; i += 1 {
 		var errGenb bytes.Buffer

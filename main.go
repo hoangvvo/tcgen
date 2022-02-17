@@ -6,24 +6,12 @@ import (
 	"os"
 	"path"
 	"strconv"
+	"time"
 
 	"github.com/hoangvvo/judgen/gen"
 )
 
-func main() {
-	defer func() {
-		if r := recover(); r != nil {
-			gen.LogError(r.(error).Error())
-			os.Exit(1)
-		}
-	}()
-	fmt.Print("Chuong trinh tao test case don gian\nhttps://github.com/hoangvvo/judgen\n\n")
-	conf := gen.GetConf()
-
-	genPath := gen.GetFilepath("Nhap file sinh test: ")
-	solPath := gen.GetFilepath("Nhap file bai giai: ")
-	total := gen.GetNumber("Nhap so lan chay: ")
-
+func execute(conf *gen.Config, genPath string, solPath string, total int) {
 	rootTempDir := path.Join(os.TempDir(), "judgen")
 	os.MkdirAll(rootTempDir, os.ModePerm)
 
@@ -39,7 +27,7 @@ func main() {
 		panic(err)
 	}
 
-	gen.LogTask("tao thu muc tam: " + tempDir)
+	gen.LogTask("Create temporary directory: " + tempDir)
 
 	gen.RunCmds(
 		conf,
@@ -47,5 +35,25 @@ func main() {
 		gen.CompileFile(conf, solPath, tempDir),
 		total, tempDir, outDir)
 
-	gen.LogSuccess("tao thanh cong " + strconv.Itoa(total) + " test case trong " + outDir)
+	gen.LogSuccess("Created " + strconv.Itoa(total) + " test cases " + outDir)
+}
+
+func main() {
+	defer func() {
+		if r := recover(); r != nil {
+			gen.LogError(r.(error).Error())
+			os.Exit(1)
+		}
+	}()
+	fmt.Print("judgen: generate test cases for coding problems\nhttps://github.com/hoangvvo/judgen\n\n")
+	conf := gen.GetConf()
+	genPath := gen.GetFilepath("Enter case generation file: ")
+	solPath := gen.GetFilepath("Enter case solver file: ")
+	total := gen.GetNumber("Number of run: ")
+
+	startTime := time.Now()
+
+	execute(conf, genPath, solPath, total)
+
+	gen.LogSuccess("\tTook " + fmt.Sprint(time.Since(startTime)))
 }

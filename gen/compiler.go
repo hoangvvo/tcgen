@@ -34,21 +34,21 @@ func nameOrSourceReplace(arg string, path string, outPath string) string {
 }
 
 func CompileFile(conf *Config, inPath string, outDir string) Executor {
-	LogTask("bien dich file: " + inPath)
+	LogTask("Compiling: " + inPath)
 
 	inputExt := filepath.Ext(inPath)[1:]
 	lang := getLanguage(conf, inputExt)
 	if lang == nil {
-		panic(errors.New("Khong ho tro: " + inputExt))
+		panic(errors.New("\tNot supported: " + inputExt))
 	} else {
-		fmt.Println("Ngon ngu:", lang.Name)
+		fmt.Println("\tLanguage:", lang.Name)
 	}
 
 	outFilename := GetOutFileLoc(inPath) // get a file without ext and path
 	outPath := path.Join(outDir, outFilename)
 
 	if lang.Compile == nil {
-		fmt.Println("Khong can bien dich")
+		LogSuccess("\tNo compilation needed")
 		outPath = outPath + "." + inputExt // add back ext
 		CopyFile(inPath, outPath)
 	} else {
@@ -73,7 +73,7 @@ func CompileFile(conf *Config, inPath string, outDir string) Executor {
 			panic(err)
 		}
 
-		fmt.Println("Bien dich thanh cong")
+		LogSuccess("\tCompilation successfully")
 	}
 
 	return func(extraArgs ...string) *exec.Cmd {
