@@ -3,6 +3,7 @@ package gen
 import (
 	"bytes"
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -51,10 +52,13 @@ func CopyArtifacts(conf *Config, inDir string, outDir string) {
 
 type Executor func(extraArgs ...string) *exec.Cmd
 
+func formatTestNumber(i int, total int) string {
+	return fmt.Sprintf("%0*d", len(strconv.Itoa(total)), i)
+}
 func RunCmds(conf *Config, cmdGenExec Executor, cmdSolExec Executor, total int, inDir string, outDir string) {
 	LogTask("Generating test cases")
 	bar := progressbar.Default(int64(total))
-	for i := 0; i < total; i += 1 {
+	for i := 1; i <= total; i += 1 {
 		var errGenb bytes.Buffer
 		cmdGen := cmdGenExec(strconv.Itoa(i))
 
@@ -72,7 +76,7 @@ func RunCmds(conf *Config, cmdGenExec Executor, cmdSolExec Executor, total int, 
 			panic(err)
 		}
 
-		CopyArtifacts(conf, inDir, path.Join(outDir, "TEST"+strconv.Itoa(i)))
+		CopyArtifacts(conf, inDir, path.Join(outDir, "TEST"+formatTestNumber(i, total)))
 
 		bar.Add(1)
 	}

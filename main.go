@@ -55,5 +55,5 @@ func main() {
 
 	execute(conf, genPath, solPath, total)
 
-	gen.LogSuccess("\tTook " + fmt.Sprint(time.Since(startTime)))
+	gen.LogSuccess("Took " + fmt.Sprint(time.Since(startTime)))
 }
