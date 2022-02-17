@@ -2,6 +2,10 @@
 
 Tạo test case cho câu hỏi lập trình.
 
+## Tải về
+
+https://github.com/hoangvvo/judgen/releases
+
 ## Hướng dẫn
 
 https://user-images.githubusercontent.com/40987398/154550586-d808d93b-9152-4231-ac89-b2175931c1f7.mp4

@@ -4,6 +4,10 @@
 
 Generate test cases for coding problems.
 
+## Download
+
+https://github.com/hoangvvo/judgen/releases
+
 ## Instruction
 
 https://user-images.githubusercontent.com/40987398/154550586-d808d93b-9152-4231-ac89-b2175931c1f7.mp4
