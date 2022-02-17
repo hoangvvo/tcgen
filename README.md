@@ -6,7 +6,7 @@ Generate test cases for coding problems.
 
 ## Instruction
 
-https://raw.githubusercontent.com/hoangvvo/judgen/main/example/demo.mp4
+![demo](https://raw.githubusercontent.com/hoangvvo/judgen/main/example/demo.mp4)
 
 Craete 2 code files for the following purposes:
 
