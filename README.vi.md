@@ -8,7 +8,7 @@ https://github.com/hoangvvo/tcgen/releases
 
 ## Hướng dẫn
 
-https://user-images.githubusercontent.com/40987398/154550586-d808d93b-9152-4231-ac89-b2175931c1f7.mp4
+https://user-images.githubusercontent.com/40987398/154596409-4c8c2dd9-1f42-4b72-851c-22b8812c56c3.mp4
 
 Tạo 2 file code cho các mục đích:
 
