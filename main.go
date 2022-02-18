@@ -8,11 +8,11 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/hoangvvo/judgen/gen"
+	"github.com/hoangvvo/tcgen/gen"
 )
 
 func execute(conf *gen.Config, genPath string, solPath string, total int) {
-	rootTempDir := filepath.Join(os.TempDir(), "judgen")
+	rootTempDir := filepath.Join(os.TempDir(), "tcgen")
 	os.MkdirAll(rootTempDir, os.ModePerm)
 
 	cwd, err := os.Getwd()
@@ -48,7 +48,7 @@ func main() {
 			os.Exit(1)
 		}
 	}()
-	fmt.Print("judgen: generate test cases for coding problems\nhttps://github.com/hoangvvo/judgen\n\n")
+	fmt.Print("tcgen: generate test cases for coding problems\nhttps://github.com/hoangvvo/tcgen\n\n")
 	conf := gen.GetConf()
 	genPath := gen.GetFilepath("Enter case generation file: ")
 	solPath := gen.GetFilepath("Enter case solver file: ")

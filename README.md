@@ -1,4 +1,4 @@
-# judgen: code judge test case generator
+# tcgen: test case generator for coding problems
 
 [Tiếng Việt](./README.vi.md)
 
@@ -6,7 +6,7 @@ Generate test cases for coding problems.
 
 ## Download
 
-https://github.com/hoangvvo/judgen/releases
+https://github.com/hoangvvo/tcgen/releases
 
 ## Instruction
 
@@ -25,7 +25,7 @@ After `n` runs, the program will copy all input and output files into folder wit
 
 ## Configuration file
 
-An optional configuration file named `judgen.yml` may placed in the same folder with `judgen`. See the sample config file: [judgen.yml](./gen/judgen.yml).
+An optional configuration file named `tcgen.yml` may placed in the same folder with `tcgen`. See the sample config file: [tcgen.yml](./gen/tcgen.yml).
 
 - `testcase.extensions`: Files with such extensions will be copied to the result folder.
 - `testcase.output`: result folder to store test cases, character "_" should be included to be later replaced with formatted test number. (eg `./result/TEST_`)
@@ -40,7 +40,7 @@ To configure a language, add a key with any name (should be alpha character) wit
 - `compile`: (only if the language needs compilation) an array of command line arguments to compile the code. Must include "SOURCE" to be replaced with the source code path and "OUTPUT" to be replaced with the output binary. Languages like Python does not have this step.
 - `run`: an array of command line arguments to run the binary. Must include "OUTPUT" to be replaced with the output binary.
 
-See the sample config [judgen.yml](./gen/judgen.yml) to learn more.
+See the sample config [tcgen.yml](./gen/tcgen.yml) to learn more.
 
 ## Write case generation and solver code
 

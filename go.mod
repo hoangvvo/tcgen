@@ -1,4 +1,4 @@
-module github.com/hoangvvo/judgen
+module github.com/hoangvvo/tcgen
 
 go 1.17
 

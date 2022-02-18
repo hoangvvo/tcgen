@@ -25,7 +25,7 @@ type Config struct {
 	Languages map[string]ConfigLanguage
 }
 
-//go:embed judgen.yml
+//go:embed tcgen.yml
 var defaultConfigDat []byte
 
 func GetConf() *Config {
@@ -36,7 +36,7 @@ func GetConf() *Config {
 		panic(err)
 	}
 
-	if configDatAlt, err := os.ReadFile(filepath.Join(cwd, "judgen.yml")); err == nil {
+	if configDatAlt, err := os.ReadFile(filepath.Join(cwd, "tcgen.yml")); err == nil {
 		configDat = configDatAlt
 	} else if os.IsNotExist(err) {
 		configDat = defaultConfigDat

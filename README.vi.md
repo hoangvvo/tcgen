@@ -1,10 +1,10 @@
-# judgen: code judge test case generator
+# tcgen: test case generator for coding problems
 
 Tạo test case cho câu hỏi lập trình.
 
 ## Tải về
 
-https://github.com/hoangvvo/judgen/releases
+https://github.com/hoangvvo/tcgen/releases
 
 ## Hướng dẫn
 
@@ -23,7 +23,7 @@ Sau khi chạy `n` lần, chuơng trình sẽ copy hết các file input, output
 
 ## File thiết lập
 
-File thiết lập tùy chọn có thể được đặt trong cùng thư mục với chuơng trình `judgen`. Xem file thiết lập mẫu: [judgen.yml](./gen/judgen.yml).
+File thiết lập tùy chọn có thể được đặt trong cùng thư mục với chuơng trình `tcgen`. Xem file thiết lập mẫu: [tcgen.yml](./gen/tcgen.yml).
 
 - `testcase.extensions`: file có các đuôi này sẽ đuợc copy ra thư mục kết quả.
 - `testcase.output`: kí tự "_" cần được sử dùng để sau này thay thế bằng stt test. (vd `./result/TEST_`)
@@ -38,7 +38,7 @@ File thiết lập tùy chọn có thể được đặt trong cùng thư mục 
 - `compile`: (chỉ nếu ngôn ngữ này cần đuợc biên dịch) viết array lệnh để biên dịch code. Bắt buộc bao gồm `SOURCE` sẽ được thay thế bằng vị trí source và `OUTPUT` là vị trí file binary sau khi biên dịch. Những ngôn ngữ như Python sẽ không có buớc này.
 - `run`: lệnh để chạy chuơng trình. Lưu ý bao gồm `OUTPUT` là file sẽ đuợc chạy
 
-Xem file thiết lập mẫu [judgen.yml](./gen/judgen.yml) để biết cách thiết lập.
+Xem file thiết lập mẫu [tcgen.yml](./gen/tcgen.yml) để biết cách thiết lập.
 
 ## Viết code tạo case và giải case
 
