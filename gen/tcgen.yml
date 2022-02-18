@@ -5,24 +5,24 @@ languages:
   c:
     name: "C"
     extensions: ["c"]
-    compile: ["gcc", "SOURCE", "-o", "OUTPUT"]
-    run: ["OUTPUT"]
+    compile: ["gcc", "$SOURCE", "-o", "$OUTPUT"]
+    run: ["$OUTPUT"]
   cpp:
     name: "C++"
     extensions: ["cpp"]
-    compile: ["g++", "SOURCE", "-o", "OUTPUT"]
-    run: ["OUTPUT"]
+    compile: ["g++", "$SOURCE", "-o", "$OUTPUT"]
+    run: ["$OUTPUT"]
   go:
     name: "Go"
     extensions: ["go"]
-    compile: ["go", "build", "-o", "OUTPUT"]
-    run: ["OUTPUT"]
+    compile: ["go", "build", "-o", "$OUTPUT"]
+    run: ["$OUTPUT"]
   python:
     name: "Python"
     extensions: ["py"]
-    run: ["python2", "OUTPUT"]
+    run: ["python2", "$OUTPUT"]
   pascal:
     name: "Pascal"
     extensions: ["pas", "pp"]
-    compile: ["fpc", "SOURCE"]
-    run: ["OUTPUT"]
+    compile: ["fpc", "-o\"$OUTPUT\"", "$SOURCE"]
+    run: ["$OUTPUT"]

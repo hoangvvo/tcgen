@@ -35,8 +35,8 @@ File thiết lập tùy chọn có thể được đặt trong cùng thư mục 
 
 - `name`: tên ngôn ngữ
 - `extensions`: mảng chứa các đuôi file để nhận diện ngôn ngữ này
-- `compile`: (chỉ nếu ngôn ngữ này cần đuợc biên dịch) viết array lệnh để biên dịch code. Bắt buộc bao gồm `SOURCE` sẽ được thay thế bằng vị trí source và `OUTPUT` là vị trí file binary sau khi biên dịch. Những ngôn ngữ như Python sẽ không có buớc này.
-- `run`: lệnh để chạy chuơng trình. Lưu ý bao gồm `OUTPUT` là file sẽ đuợc chạy
+- `compile`: (chỉ nếu ngôn ngữ này cần đuợc biên dịch) viết array lệnh để biên dịch code. Bắt buộc bao gồm `$SOURCE` sẽ được thay thế bằng vị trí source và `$OUTPUT` là vị trí file binary sau khi biên dịch. Những ngôn ngữ như Python sẽ không có buớc này.
+- `run`: lệnh để chạy chuơng trình. Lưu ý bao gồm `$OUTPUT` là file sẽ đuợc chạy
 
 Xem file thiết lập mẫu [tcgen.yml](./gen/tcgen.yml) để biết cách thiết lập.
 

@@ -9,8 +9,8 @@ import (
 	"strings"
 )
 
-const SOURCEARG = "SOURCE"
-const OUTPUTARG = "OUTPUT"
+const SOURCE_TOKEN = "$SOURCE"
+const OUTPUT_TOKEN = "$OUTPUT"
 
 func getLanguage(conf *Config, ext string) *ConfigLanguage {
 	for _, language := range conf.Languages {
@@ -23,12 +23,9 @@ func getLanguage(conf *Config, ext string) *ConfigLanguage {
 	return nil
 }
 
-func nameOrSourceReplace(arg string, path string, outPath string) string {
-	if arg == SOURCEARG {
-		return path
-	} else if arg == OUTPUTARG {
-		return outPath
-	}
+func replaceSO(arg string, inPath string, outPath string) string {
+	arg = strings.Replace(arg, SOURCE_TOKEN, inPath, -1)
+	arg = strings.Replace(arg, OUTPUT_TOKEN, outPath, -1)
 	return arg
 }
 
@@ -55,9 +52,9 @@ func CompileFile(conf *Config, inPath string, outDir string) Executor {
 		var cmdArgs []string
 		for idx, bareCmdArg := range *lang.Compile {
 			if idx == 0 {
-				cmdName = nameOrSourceReplace(bareCmdArg, inPath, outPath)
+				cmdName = replaceSO(bareCmdArg, inPath, outPath)
 			} else {
-				cmdArgs = append(cmdArgs, nameOrSourceReplace(bareCmdArg, inPath, outPath))
+				cmdArgs = append(cmdArgs, replaceSO(bareCmdArg, inPath, outPath))
 			}
 		}
 
@@ -80,9 +77,9 @@ func CompileFile(conf *Config, inPath string, outDir string) Executor {
 		var cmdArgs []string
 		for idx, bareCmdArg := range lang.Run {
 			if idx == 0 {
-				cmdName = nameOrSourceReplace(bareCmdArg, inPath, outPath)
+				cmdName = replaceSO(bareCmdArg, inPath, outPath)
 			} else {
-				cmdArgs = append(cmdArgs, nameOrSourceReplace(bareCmdArg, inPath, outPath))
+				cmdArgs = append(cmdArgs, replaceSO(bareCmdArg, inPath, outPath))
 			}
 		}
 		cmdArgs = append(cmdArgs, extraArgs...)
