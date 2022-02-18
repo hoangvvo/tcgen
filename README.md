@@ -21,24 +21,24 @@ The input and output files should have the extensions listed in the config `test
 
 Run the program, then type in the location of the above two files and the number of run `n`.
 
-After `n` runs, the program will copy all input and output files into folder with the naming of "TEST`i`" (where `i` is the test number)
+After `n` runs, the program will copy all input and output files into folder with the naming of `testcase.output`.
 
 ## Configuration file
 
 An optional configuration file named `tcgen.yml` may placed in the same folder with `tcgen`. See the sample config file: [tcgen.yml](./gen/tcgen.yml).
 
-- `testcase.extensions`: Files with such extensions will be copied to the result folder.
-- `testcase.output`: result folder to store test cases, character "_" should be included to be later replaced with formatted test number. (eg `./result/TEST_`)
-- `language.[name]`: Configure a language. See below.
+- `testcase.extensions`: Files with such extensions will be copied to the result folder. (eg: `["out", "inp", "txt"]`)
+- `testcase.output`: result folder to store test cases, character `*` should be included to be later replaced with formatted test number. (eg: `./result/TEST*`)
+- `language.[key]`: Configure a language. See below.
 
 ## Configure a language
 
-To configure a language, add a key with any name (should be alpha character) with the following properties:
+To configure a language, add a key with any name with the following properties:
 
 - `name`: Name of the language
 - `extensions`: Array containing file extensions to recognize this language
-- `compile`: (only if the language needs compilation) an array of command line arguments to compile the code. Must include `$SOURCE` to be replaced with the source code path and `$OUTPUT` to be replaced with the output binary path. Languages like Python does not have this step.
-- `run`: an array of command line arguments to run the binary. Must include `$OUTPUT` to be replaced with the output binary.
+- `compile`: (only if the language needs compilation) an array of command line arguments to compile the code. Must include `$SOURCE` (to be replaced with the source path) and `$OUTPUT` (to be replaced with the output binary path). Languages like Python does not have this step.
+- `run`: an array of command line arguments to run the binary. Must include `$OUTPUT` (to be replaced with the output binary).
 
 See the sample config [tcgen.yml](./gen/tcgen.yml) to learn more.
 
