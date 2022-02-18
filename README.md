@@ -12,7 +12,7 @@ https://github.com/hoangvvo/tcgen/releases
 
 https://user-images.githubusercontent.com/40987398/154596409-4c8c2dd9-1f42-4b72-851c-22b8812c56c3.mp4
 
-Craete 2 code files for the following purposes:
+Create 2 code files for the following purposes:
 
 - **Case generation**: When run, this code should write the input file.
 - **Case solver**: When run, this code should read the input file and write to the output file.
