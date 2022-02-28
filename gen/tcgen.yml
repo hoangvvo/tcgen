@@ -26,3 +26,11 @@ languages:
     extensions: ["pas", "pp"]
     compile: ["fpc", "-o\"$OUTPUT\"", "$SOURCE"]
     run: ["$OUTPUT"]
+  windows-executable:
+    name: "Microsoft Windows Executable"
+    extensions: ["exe"]
+    run: ["$OUTPUT"]
+  binary:
+    name: "Binary"
+    extensions: [""]
+    run: ["$OUTPUT"]

@@ -32,7 +32,10 @@ func replaceSO(arg string, inPath string, outPath string) string {
 func CompileFile(conf *Config, inPath string, outDir string) Executor {
 	LogTask("Compiling: " + inPath)
 
-	inputExt := filepath.Ext(inPath)[1:]
+	inputExt := filepath.Ext(inPath)
+	if len(inputExt) > 0 {
+		inputExt = inputExt[1:] // remove "."
+	}
 	lang := getLanguage(conf, inputExt)
 	if lang == nil {
 		panic(errors.New("\tNot supported: " + inputExt))
@@ -40,12 +43,14 @@ func CompileFile(conf *Config, inPath string, outDir string) Executor {
 		fmt.Println("\tLanguage:", lang.Name)
 	}
 
-	outFilename := getOutFilename(inPath) // get a file without ext and path
+	outFilename := getFilenameWithoutExt(inPath) // get a file without ext and path
 	outPath := filepath.Join(outDir, outFilename)
 
 	if lang.Compile == nil {
 		LogSuccess("\tNo compilation needed")
-		outPath = outPath + "." + inputExt // add back ext
+		if len(inputExt) > 0 {
+			outPath = outPath + "." + inputExt // add back ext
+		}
 		CopyFile(inPath, outPath)
 	} else {
 		var cmdName string

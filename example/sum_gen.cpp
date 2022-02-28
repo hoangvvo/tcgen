@@ -17,9 +17,28 @@ int randomBetweenTwoNum(int min, int max)
 int main(int argc, char **argv)
 {
   ofstream ofs;
+
+  double runNumber = atoi(argv[1]);
+  double total = atoi(argv[2]);
+
   ofs.open("SUM.INP", ifstream::out);
 
-  ofs << randomBetweenTwoNum(0, 10000) << " " << randomBetweenTwoNum(0, 10000);
+  // 30% test to be easy
+  if (runNumber / total < 0.3)
+  {
+    ofs << randomBetweenTwoNum(0, 100) << " " << randomBetweenTwoNum(0, 100);
+  }
+  // other 30% to be medium
+  else if (runNumber / total < 0.6)
+  {
+
+    ofs << randomBetweenTwoNum(0, 10000) << " " << randomBetweenTwoNum(0, 10000);
+  }
+  // the rest to be hard
+  else
+  {
+    ofs << randomBetweenTwoNum(0, 1000000) << " " << randomBetweenTwoNum(0, 1000000);
+  }
 
   ofs.close();
 

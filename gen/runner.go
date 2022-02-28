@@ -57,9 +57,15 @@ func formatTestNumber(i int, total int) string {
 func RunCmds(conf *Config, cmdGenExec Executor, cmdSolExec Executor, total int, inDir string, outDir string) {
 	LogTask("Generating test cases")
 	bar := progressbar.Default(int64(total))
+
+	totalNumberStr := strconv.Itoa(total)
+
 	for i := 1; i <= total; i += 1 {
 		var errGenb bytes.Buffer
-		cmdGen := cmdGenExec(strconv.Itoa(i))
+
+		runNumberStr := strconv.Itoa(i)
+
+		cmdGen := cmdGenExec(runNumberStr, totalNumberStr)
 
 		cmdGen.Stderr = &errGenb
 		if err := cmdGen.Run(); err != nil {
@@ -68,7 +74,7 @@ func RunCmds(conf *Config, cmdGenExec Executor, cmdSolExec Executor, total int, 
 		}
 
 		var errSolb bytes.Buffer
-		cmdSol := cmdSolExec(strconv.Itoa(i))
+		cmdSol := cmdSolExec(runNumberStr, totalNumberStr)
 		cmdSol.Stderr = &errSolb
 		if err := cmdSol.Run(); err != nil {
 			LogError(errSolb.String())

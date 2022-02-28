@@ -89,7 +89,7 @@ func GetFilepath(promptStr string) string {
 	return filePath
 }
 
-func getOutFilename(basename string) string {
+func getFilenameWithoutExt(basename string) string {
 	return strings.TrimSuffix(filepath.Base(basename), filepath.Ext(basename))
 }
 
