@@ -23,7 +23,7 @@ Sau khi chạy `n` lần, chuơng trình sẽ copy hết các file input, output
 
 ## File thiết lập
 
-File thiết lập tùy chọn có thể được đặt trong cùng thư mục với chuơng trình `tcgen`. Xem file thiết lập mẫu: [tcgen.yml](./gen/tcgen.yml).
+File thiết lập tùy chọn có thể được đặt trong cùng thư mục với chuơng trình `tcgen`. Xem file thiết lập mẫu: [tcgen.yml](./tcgen.yml).
 
 - `testcase.extensions`: file có các đuôi này sẽ đuợc copy ra thư mục kết quả. (vd: `["out", "inp", "txt"]`)
 - `testcase.output`: kí tự `*` cần được sử dùng để sau này thay thế bằng stt test. (vd: `./result/TEST*`)

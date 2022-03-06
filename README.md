@@ -65,7 +65,7 @@ To configure a language, add a key with any name with the following properties:
 - `compile`: (only if the language needs compilation) an array of command line arguments to compile the code. Must include `$SOURCE` (to be replaced with the source path) and `$OUTPUT` (to be replaced with the output binary path). Languages like Python does not have this step.
 - `run`: an array of command line arguments to run the binary. Must include `$OUTPUT` (to be replaced with the output binary).
 
-See the sample config [tcgen.yml](./gen/tcgen.yml) for some examples.
+See the sample config [tcgen.yml](./tcgen.yml) for some examples.
 
 ## Write case generation and solver code
 

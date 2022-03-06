@@ -5,7 +5,7 @@ languages:
   c:
     name: "C"
     extensions: ["c"]
-    compile: ["gcc", "$SOURCE", "-o", "$OUTPUT"]
+    compile: ["gcc", "$SOURCE", "-std=c++11", "-o", "$OUTPUT"]
     run: ["$OUTPUT"]
   cpp:
     name: "C++"
@@ -17,10 +17,15 @@ languages:
     extensions: ["go"]
     compile: ["go", "build", "-o", "$OUTPUT"]
     run: ["$OUTPUT"]
+  rust:
+    name: "Rust"
+    extensions: ["rs"]
+    compile: ["rustc", "-o", "$OUTPUT"]
+    run: ["$OUTPUT"]
   python:
     name: "Python"
     extensions: ["py"]
-    run: ["python2", "$OUTPUT"]
+    run: ["python", "$OUTPUT"]
   pascal:
     name: "Pascal"
     extensions: ["pas", "pp"]
